@@ -3,7 +3,7 @@ local Leveling = {}
 Leveling.scriptName = "BetterVanillaLeveling"
 
 Leveling.defaultConfig = {
-    attributeModifier = 2,
+    attributeModifier = 3,
     luckModifier = 1,
     levelCap = 100,
     healthScale = {
@@ -13,11 +13,11 @@ Leveling.defaultConfig = {
         levelModifier = 1.5
     },
     progression = {
-        enabled = true,
+        enabled = false,
         threshold = 10,
         attributePoints = 1,
         message = "#FFD700Rigorous training has improved your %s by %d!\n",
-        showInChat = true
+        showInChat = false
     }
 }
 
