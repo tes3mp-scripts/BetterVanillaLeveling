@@ -48,6 +48,9 @@ function Leveling.increaseAttribute(pid, id, value)
 end
 
 function Leveling.progression(pid)
+    if not Leveling.config.progression.enabled then
+        return
+    end
     local player = Players[pid]
     local progress = player.data.customVariables.levelingProgression
 
