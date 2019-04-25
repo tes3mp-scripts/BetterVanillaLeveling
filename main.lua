@@ -16,7 +16,8 @@ Leveling.defaultConfig = {
         enabled = true,
         threshold = 10,
         attributePoints = 1,
-        message = "#FFD700Rigorous training has improved your %s by %d!\n"
+        message = "#FFD700Rigorous training has improved your %s by %d!\n",
+        showInChat = true
     }
 }
 
@@ -71,14 +72,17 @@ function Leveling.progression(pid)
         if progress[id] >= Leveling.config.progression.threshold then
             progress[id] = progress[id] - Leveling.config.progression.threshold
 
-            tes3mp.SendMessage(
-                pid,
-                string.format(
-                    Leveling.config.progression.message,
-                    tes3mp.GetAttributeName(id),
-                    Leveling.config.progression.attributePoints
-                )
+            local s = string.format(
+                Leveling.config.progression.message,
+                tes3mp.GetAttributeName(id),
+                Leveling.config.progression.attributePoints
             )
+
+            if Leveling.config.progress.showInChat then
+                tes3mp.SendMessage(pid, s)
+            else
+                tes3mp.MessageBox(pid, -1, s)
+            end
 
             if id == Leveling.STRENGTH or id == Leveling.ENDURANCE then
                 attributesChanged = true

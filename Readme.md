@@ -16,3 +16,4 @@ You can find the configuration file in `server/data/custom/__config_BetterVanill
   * `threshold` how many skill increases are required for an attribute increase.
   * `attributePoints` by how many points does the attribute incraese after `threshold` is passed.
   * `message` message displayed when an attribute is increased this way.
+  * `showInChat` if `true`, sends `message` in chat, otherwise shows a MessageBox
