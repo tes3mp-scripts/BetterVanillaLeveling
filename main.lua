@@ -100,7 +100,7 @@ function Leveling.resetSkillIncreases(pid)
     local name = nil
     for id = 0, 7 do
         name = tes3mp.GetAttributeName(id)
-        Players[pid].data.attributeSkillIncreases[name] = Leveling.skillIncrease[id]
+        Players[pid].data.attributes[name].skillIncrease = Leveling.skillIncrease[id]
         tes3mp.SetSkillIncrease(pid, id, Leveling.skillIncrease[id])
         tes3mp.SendAttributes(pid)
     end
