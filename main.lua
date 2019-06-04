@@ -78,7 +78,7 @@ function Leveling.progression(pid)
                 Leveling.config.progression.attributePoints
             )
 
-            if Leveling.config.progress.showInChat then
+            if Leveling.config.progression.showInChat then
                 tes3mp.SendMessage(pid, s)
             else
                 tes3mp.MessageBox(pid, -1, s)
