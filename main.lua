@@ -31,11 +31,11 @@ Leveling.modifierToSkillIncrease = {0, 1, 5, 8, 10}
 function Leveling.updateSkillIncrease()
     Leveling.skillIncrease = {}
     for id = 0, 6 do
-        Leveling.skillIncrease[id] = 
+        Leveling.skillIncrease[id] =
             Leveling.modifierToSkillIncrease[Leveling.config.attributeModifier]
     end
 
-    Leveling.skillIncrease[7] = 
+    Leveling.skillIncrease[7] =
             Leveling.modifierToSkillIncrease[Leveling.config.luckModifier]
 end
 
@@ -44,7 +44,7 @@ Leveling.updateSkillIncrease()
 
 function Leveling.increaseAttribute(pid, id, value)
     local name = tes3mp.GetAttributeName(id)
-    Players[pid].data.attributes[name] = Players[pid].data.attributes[name] + value
+    Players[pid].data.attributes[name].base = Players[pid].data.attributes[name].base + value
     Players[pid]:LoadAttributes()
 end
 
@@ -138,18 +138,13 @@ end
 
 function Leveling.OnPlayerSkill(eventStatus, pid)
     if eventStatus.validCustomHandlers then
-        --Leveling.progression(pid)
-        --[[Leveling.resetSkillIncreases(pid)
-        if Leveling.config.levelCap < 100 then
-            Leveling.applyLevelCap(pid)
-        end]]
+        Leveling.progression(pid)
+        Leveling.resetSkillIncreases(pid)
     end
 end
 
 function Leveling.OnPlayerLevel(eventStatus, pid)
     if eventStatus.validCustomHandlers then
-        Leveling.progression(pid)
-        Leveling.resetSkillIncreases(pid)
         Leveling.scaleBaseHealth(pid)
     end
 end
