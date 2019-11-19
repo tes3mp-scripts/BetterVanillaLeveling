@@ -143,6 +143,12 @@ function Leveling.OnPlayerSkill(eventStatus, pid)
     end
 end
 
+function Leveling.OnPlayerAttribute(eventStatus, pid)
+    if eventStatus.validCustomHandlers then
+        Leveling.scaleBaseHealth(pid)
+    end
+end
+
 function Leveling.OnPlayerLevel(eventStatus, pid)
     if eventStatus.validCustomHandlers then
         Leveling.scaleBaseHealth(pid)
@@ -158,5 +164,6 @@ end
 
 
 customEventHooks.registerHandler("OnPlayerSkill", Leveling.OnPlayerSkill)
+customEventHooks.registerHandler("OnPlayerAttribute", Leveling.OnPlayerAttribute)
 customEventHooks.registerHandler("OnPlayerLevel", Leveling.OnPlayerLevel)
 customEventHooks.registerHandler("OnPlayerAuthentified", Leveling.OnPlayerAuthentified)
